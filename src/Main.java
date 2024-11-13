@@ -14,13 +14,16 @@ public class Main {
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connected to the PostgreSQL database successfully!");
             Statement st = connection.createStatement();
-            String query = "SELECT * FROM student WHERE student_id = 3;";
-            ResultSet rs =  st.executeQuery(query);
-            rs.next();
-            String name = rs.getString("name");
-            System.out.println(name);
+            String query = "SELECT * FROM student;";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()){
+                String usersData = rs.getInt(1) + " " + rs.getString(2);
+                System.out.println(usersData);
+            }
+
             st.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
