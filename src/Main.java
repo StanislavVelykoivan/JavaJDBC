@@ -7,7 +7,8 @@ public class Main {
 
 
         StudentDAO dao = new StudentDAO();
-        Student s1 = dao.getStudent(3);
-        System.out.println(s1.name);
+        Student s = new Student("Jon Silver");
+
+        dao.addStudent(s);
     }
 }
